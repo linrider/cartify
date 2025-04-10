@@ -23,10 +23,7 @@ public class RegistrationService {
         person.setPassword(passwordEncoder.encode(person.getPassword()));
         person.setRole("ROLE_USER");
         person.setEnable(false);
-        jdbcTemplate.update("INSERT INTO person (username, password, email, role, enable) " +
-                "VALUES (?, ?, ?, ?, ?)",
-                person.getUsername(), person.getPassword(), person.getEmail(), person.getRole(),
-                person.isEnable());
+        personService.save(person);
         String key = activationServise.saveActivation(person.getEmail());
         emailService.sendActivationEmail(person.getEmail(), key);
     }

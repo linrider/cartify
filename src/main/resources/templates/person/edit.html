@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <form th:method="PATCH" th:action="@{/person/{id}(id=${person.getId()})}" th:object="${person}">
+        <label for="username">Username:</label>
+        <input type="text" th:field="*{username}" id="username">
+        <br>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>
